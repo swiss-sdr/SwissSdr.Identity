@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+	<script src="bower_components/oidc-client/dist/oidc-client.js"></script>
+	<script>
+		var userManager = new Oidc.UserManager({
+			authority: "https://accounts.swiss-sdr.ch",
+			client_id: "testclient",
+			redirect_uri: window.location.origin + "/silentredirect.html",
+			response_type: "id_token token",
+			scope: "openid profile swisssdr-api"
+		});
+
+		userManager.signinRedirect({
+			acr_values: 'idp:KentorAuthServices'
+		})
+		.then(function (user) {
+			parent.postMessage("silentloginsuccess", "*");
+		}, function (error) {
+			parent.postMessage("silentloginerror", "*");
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@model  SwissSdr.Identity.Models.RegisterViewModel
+@using SwissSdr.Datamodel
+@inject IStringLocalizer<RegisterViewModel> localizer
+@inject IHtmlLocalizer<RegisterViewModel> htmlLocalizer
+
+<form asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">
+	<mdl-card class="account-card account-card--register" mdl-shadow="@MdlShadows.Dp16">
+		<mdl-card-title title="@localizer.Title()"/>
+		<mdl-card-supporting-text>
+			<mdl-grid>
+				@if (ViewBag.Message != null)
+				{
+					<mdl-cell mdl-color="MDLColors.Accent">
+						@ViewBag.Message
+					</mdl-cell>
+				}
+
+				<mdl-cell size="6">
+					<div class="mdl-radio-container">
+						<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+							<input class="mdl-radio__button" asp-for="Gender" type="radio" value="male" tabindex="1">
+							<span class="mdl-radio__label">@localizer.GenderLabel(Gender.Male)</span>
+						</label>
+						<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+							<input class="mdl-radio__button" asp-for="Gender" type="radio" value="female" tabindex="2">
+							<span class="mdl-radio__label">@localizer.GenderLabel(Gender.Female)</span>
+						</label>
+					</div>
+				</mdl-cell>
+
+				<mdl-cell size="6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" validationstate-for="Fullname">
+						<input class="mdl-textfield__input" asp-for="Fullname" tabindex="4" />
+						<label class="mdl-textfield__label" asp-for="Fullname">@localizer.FullnameLabel()</label>
+						<span class="mdl-textfield__error" asp-validation-for="Fullname"></span>
+					</div>
+				</mdl-cell>
+
+				<mdl-cell size="6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" validationstate-for="Title">
+						<input class="mdl-textfield__input" asp-for="Title" tabindex="3" />
+						<label class="mdl-textfield__label" asp-for="Title">@localizer.TitleLabel()</label>
+						<span class="mdl-textfield__error" asp-validation-for="Title"></span>
+					</div>
+				</mdl-cell>
+
+				<mdl-cell size="6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" validationstate-for="EMail">
+						<input class="mdl-textfield__input" asp-for="EMail" tabindex="5" />
+						<label class="mdl-textfield__label" asp-for="EMail">@localizer.EmailLabel()</label>
+						<span class="mdl-textfield__error" asp-validation-for="EMail"></span>
+					</div>
+				</mdl-cell>
+
+				<mdl-cell size="12">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" validationstate-for="IsTosAccepted">
+						<input class="mdl-checkbox__input" type="checkbox" asp-for="IsTosAccepted" tabindex="6">
+						<span class="mdl-checkbox__label">@htmlLocalizer.TosAcceptLabel("https://martin-schmied-cwja.squarespace.com/nutzungsbedingungenagb")</span>
+						<span class="mdl-textfield__error" asp-validation-for="IsTosAccepted"></span>
+					</label>
+				</mdl-cell>
+			</mdl-grid>
+		</mdl-card-supporting-text>
+		<mdl-card-actions>
+			<mdl-button tabindex="7">@localizer.CreateAccountAction()</mdl-button>
+		</mdl-card-actions>
+	</mdl-card>
+</form>

@@ -1,0 +1,21 @@
+﻿@model SwissSdr.Identity.Models.RemoveExternalLoginViewModel
+@inject IStringLocalizer<RemoveExternalLoginViewModel> localizer
+
+<form asp-action="RemoveExternalLoginCallback" asp-route-returnUrl="@Model.ReturnUrl">
+	<mdl-card class="account-card account-card--logout" mdl-shadow="@MdlShadows.Dp16">
+		<mdl-card-title title="@localizer.Title()" />
+		<mdl-card-supporting-text>@localizer.Text(Model.Provider)</mdl-card-supporting-text>
+		<mdl-card-actions>
+			<a class="mdl-button mdl-js-button" href="@Model.ReturnUrl">
+				@localizer.ActionCancel()
+			</a>
+			<button class="mdl-button mdl-js-button">
+				<mdl-icon icon="MDLIcons.power_settings_new" />
+				@localizer.ActionConfirm()
+			</button>
+		</mdl-card-actions>
+	</mdl-card>
+
+	<input type="hidden" asp-for="Provider" value="@Model.Provider" />
+	<input type="hidden" asp-for="UserId" value="@Model.UserId" />
+</form>

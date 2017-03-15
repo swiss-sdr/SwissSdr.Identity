@@ -1,0 +1,105 @@
+﻿@import "variables";
+
+body {
+	min-height: 100%;
+	background: url('/images/bg.jpg') no-repeat top left/cover;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.container__inner {
+	max-width: 48em;
+}
+
+.account-card {
+	width: 100%;
+
+	.mdl-card__title {
+		height: 10em;
+		color: white;
+		background: $base url('/images/swiss-sdr_logo_neg.svg') no-repeat 0.5em 0.5em/8em;
+	}
+}
+
+.account-card--login {
+	.login-icon {
+		position: relative;
+		top: 0.125em;
+		margin-right: 0.5em;
+		font-size: 1.25em;
+	}
+
+	.login-icon-large {
+		font-size: 3em;
+		color: white;
+	}
+
+	&.loginscheme-kentorauthservices .mdl-card__title {
+		height: 10em;
+		color: white;
+		background: url('/images/Teaser-SWITCHaai.jpg') no-repeat top center/cover;
+	}
+
+	&.loginscheme-google .mdl-card__title {
+		height: 6em;
+		color: white;
+		background: $google;
+	}
+
+	&.loginscheme-facebook .mdl-card__title {
+		height: 6em;
+		color: white;
+		background: $facebook;
+	}
+}
+
+.account-card--logout {
+}
+
+.account-card--register {
+	.mdl-textfield {
+		width: 100%;
+	}
+}
+
+.mdl-radio-container {
+	padding: 20px 0;
+
+	.mdl-radio + .mdl-radio {
+		margin-left: 8px;
+	}
+}
+
+.mdl-checkbox {
+	height: auto;
+	min-height: 24px;
+
+	&.is-invalid {
+		@include breakpoint(max-width 35em) {
+			min-height: 60px;
+		}
+
+		.mdl-textfield__error {
+			visibility: visible;
+		}
+	}
+}
+
+.mdl-textfield--floating-label {
+	&.is-invalid {
+		.mdl-textfield__label {
+			font-size: inherit;
+		}
+	}
+
+	&.is-invalid.is-focused {
+		.mdl-textfield__label {
+			font-size: 12px;
+		}
+	}
+}

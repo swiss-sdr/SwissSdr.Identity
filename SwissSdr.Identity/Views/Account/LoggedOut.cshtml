@@ -1,0 +1,25 @@
+﻿@model SwissSdr.Identity.Models.LoggedOutViewModel
+@inject IStringLocalizer<LoggedOutViewModel> localizer
+
+<mdl-card class="account-card account-card--logout" mdl-shadow="@MdlShadows.Dp16">
+	<mdl-card-title title="@localizer.Title()" />
+	@if (Model.PostLogoutRedirectUri != null)
+	{
+		<mdl-card-supporting-text>@localizer.TextWithPostLogoutRedirect()</mdl-card-supporting-text>
+		<mdl-card-actions>
+			<a class="mdl-button mdl-js-button" href="@Model.PostLogoutRedirectUri">
+				<mdl-icon icon="MDLIcons.refresh" />
+				@localizer.Action()
+			</a>
+		</mdl-card-actions>
+	}
+	else
+	{
+		<mdl-card-supporting-text>@localizer.TextNoRedirect()</mdl-card-supporting-text>
+	}
+</mdl-card>
+
+@if (Model.SignOutIframeUrl != null)
+{
+	<iframe style="display:none" width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+}

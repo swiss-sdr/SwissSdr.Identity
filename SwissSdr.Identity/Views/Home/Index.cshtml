@@ -1,0 +1,14 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnv
+@inject IStringLocalizer<SwissSdr.Identity.Controllers.HomeController> localizer
+
+<mdl-card mdl-shadow="@MdlShadows.Dp16">
+	<mdl-card-supporting-text>
+		<mdl-card-title title="@((hostingEnv.EnvironmentName.Equals("production", StringComparison.InvariantCultureIgnoreCase)) ? "Swiss SDR IdP" : $"Swiss SDR IdP ({hostingEnv.EnvironmentName})")" />
+	</mdl-card-supporting-text>
+	<mdl-card-actions>
+		<a class="mdl-button mdl-js-button" href="@localizer.AppUrl()">
+			<mdl-icon icon="MDLIcons.open_in_new"/>
+			@localizer.OpenAppAction()
+		</a>
+	</mdl-card-actions>
+</mdl-card>

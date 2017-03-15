@@ -1,0 +1,25 @@
+﻿@model SwissSdr.Identity.Models.LoginViewModel
+@inject IStringLocalizer<LoginViewModel> localizer
+
+<mdl-grid>
+	@foreach (var provider in Model.ExternalProviders)
+	{
+		<mdl-cell size="@(provider.Type == LoginType.SwitchAai ? 12 : 6)">
+			<mdl-card class="account-card account-card--login loginscheme-@provider.AuthenticationScheme.ToLowerInvariant()" mdl-shadow="@MdlShadows.Dp16">
+				<mdl-card-title title="@provider.DisplayName" />
+				<mdl-card-supporting-text>
+					@localizer[$"{provider.AuthenticationScheme}Text"]
+				</mdl-card-supporting-text>
+				<mdl-card-actions>
+					<a class="mdl-button mdl-js-button" asp-action="ExternalLogin" asp-route-provider="@provider.AuthenticationScheme" asp-route-returnUrl="@Model.ReturnUrl">
+						<i class="login-icon icon-@provider.AuthenticationScheme.ToLowerInvariant()"></i>
+						@localizer[$"{provider.AuthenticationScheme}Action"]
+					</a>
+				</mdl-card-actions>
+				<mdl-card-menu>
+					<i class="login-icon-large icon-@provider.AuthenticationScheme.ToLowerInvariant()"></i>
+				</mdl-card-menu>
+			</mdl-card>
+		</mdl-cell>
+	}
+</mdl-grid>

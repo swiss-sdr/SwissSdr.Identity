@@ -1,0 +1,80 @@
+﻿@import "variables";
+
+/* Material Icons */
+@font-face {
+	font-family: "Material Icons";
+	font-style: normal;
+	font-weight: 400;
+	src: url("/fonts/MaterialIcons-Regular.eot"); /* For IE6-8 */
+	src: local("Material Icons"), local("MaterialIcons-Regular"), url("/fonts/MaterialIcons-Regular.woff2") format("woff2"), url("/fonts/MaterialIcons-Regular.woff") format("woff"), url("/fonts/MaterialIcons-Regular.ttf") format("truetype");
+}
+
+.material-icons {
+	font-family: "Material Icons";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px; /* Preferred icon size */
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	/* Support for IE. */
+	font-feature-settings: "liga";
+}
+
+/* Custom Icons */
+
+@font-face {
+  font-family: 'swisssdr-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBowAAAC8AAAAYGNtYXAXVtKJAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZqTcwPgAAAF4AAAB8GhlYWQPiw6NAAADaAAAADZoaGVhC1cHXQAAA6AAAAAkaG10eBWBAAAAAAPEAAAAHGxvY2EA3gFmAAAD4AAAABBtYXhwAA4ARQAAA/AAAAAgbmFtZUzIkckAAAQQAAAB2nBvc3QAAwAAAAAF7AAAACAAAwRgAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAgPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6QL//f//AAAAAAAg6QD//f//AAH/4xcEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAD/wAQAA8AAKQAAASEiBhURFBYzIREjNTM1NDYzOgEzMhYXByMiBh0BMwcjESEyNjURNCYjA8f8chghIRgB6oWFblkBAgEePB4FUjAdmROFAQQYISEYA8AhGPxyGCEBjZpyY2kDA4oqIWOa/nMhGAOOGCEAAAABAAD/wAPsA8AAQgAAASEVIQ4BBw4BIyIuAjU0PgI3MjYzMhYXNy4DIyoBIyIOAhUUHgIzOgEzMj4CNz4DNTwBJxY0MTQmJwPi/h4BEwk3JyRULkBwVDAvUm4/AQIBOGMlkSFMVlwxAgIBaruLUFCLu2oECAQvWVNKISI4JxUBAQUFAh3GMU8aFxkwVHBAP29UMQEBKiOSHzEjElCLu2pqu4tQESAuHSJRW2M0BQsFAQEcNRoAAAAABgAAAEQHlQM8AAYADgARABkAHAAgAAATCQE1LQE1AQcjEzMTIycLASEFByMTMxMjJwsBIRcjETMAAoH9fwFG/roDPy9K4mLmSTCdhwEPARovS+Ji50ownYcBEPZFRQM8/oT+hMiytsj9vIICaf2XggGu/oo4ggJp/ZeCAa7+iroCaQAAAQAAAAEAAKt1jBFfDzz1AAsEAAAAAADUa2UIAAAAANRrZQgAAP/AB5UDwAAAAAgAAgAAAAAAAAABAAADwP/AAAAHlQAAAAAHlQABAAAAAAAAAAAAAAAAAAAABwQAAAAAAAAAAAAAAAIAAAAEAAAAA+wAAAeVAAAAAAAAAAoAFAAeAFoAtgD4AAEAAAAHAEMABgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAOAAAAAQAAAAAAAgAHAJ8AAQAAAAAAAwAOAEsAAQAAAAAABAAOALQAAQAAAAAABQALACoAAQAAAAAABgAOAHUAAQAAAAAACgAaAN4AAwABBAkAAQAcAA4AAwABBAkAAgAOAKYAAwABBAkAAwAcAFkAAwABBAkABAAcAMIAAwABBAkABQAWADUAAwABBAkABgAcAIMAAwABBAkACgA0APhzd2lzc3Nkci1pY29ucwBzAHcAaQBzAHMAcwBkAHIALQBpAGMAbwBuAHNWZXJzaW9uIDEuMABWAGUAcgBzAGkAbwBuACAAMQAuADBzd2lzc3Nkci1pY29ucwBzAHcAaQBzAHMAcwBkAHIALQBpAGMAbwBuAHNzd2lzc3Nkci1pY29ucwBzAHcAaQBzAHMAcwBkAHIALQBpAGMAbwBuAHNSZWd1bGFyAFIAZQBnAHUAbABhAHJzd2lzc3Nkci1pY29ucwBzAHcAaQBzAHMAcwBkAHIALQBpAGMAbwBuAHNGb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'swisssdr-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon-google {
+  &:before {
+    content: $icon-google;
+  }
+}
+.icon-switchaai {
+  &:before {
+    content: $icon-switchaai;
+  }
+}
+.icon-kentorauthservices {
+  &:before {
+    content: $icon-kentorauthservices;
+  }
+}
+

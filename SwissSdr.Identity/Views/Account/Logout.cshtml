@@ -1,0 +1,17 @@
+﻿@model SwissSdr.Identity.Models.LogoutViewModel
+@inject IStringLocalizer<LogoutViewModel> localizer
+
+<form asp-action="Logout">
+	<mdl-card class="account-card account-card--logout" mdl-shadow="@MdlShadows.Dp16">
+		<mdl-card-title title="@localizer.Title()" />
+		<mdl-card-supporting-text>@localizer.Text()</mdl-card-supporting-text>
+		<mdl-card-actions>
+			<button class="mdl-button mdl-js-button">
+				<mdl-icon icon="MDLIcons.power_settings_new" />
+				@localizer.Action()
+			</button>
+		</mdl-card-actions>
+	</mdl-card>
+
+	<input type="hidden" name="logoutId" value="@Model.LogoutId" />
+</form>

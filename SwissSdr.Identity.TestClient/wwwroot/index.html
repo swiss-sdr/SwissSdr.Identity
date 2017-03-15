@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Application</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        .main-container {
+            padding-top: 70px;
+        }
+
+        pre:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">JS Application</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="list-inline list-unstyled requests">
+                    <li><a href="index.html" class="btn btn-primary">Home</a></li>
+					<li><button type="button" class="btn btn-default js-login">Login</button></li>
+                    <li><button type="button" class="btn btn-default js-logout">Logout</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">ID Token Contents</div>
+                    <div class="panel-body">
+                        <pre class="js-id-token"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/oidc-client/dist/oidc-client.js"></script>
+
+    <script>
+        // helper function to show data to the user
+        function display(selector, data) {
+            if (data && typeof data === "string") {
+                data = JSON.parse(data);
+            }
+            if (data) {
+                data = JSON.stringify(data, null, 2);
+            }
+
+            $(selector).text(data);
+        }
+
+        Oidc.Log.logger = console;
+        Oidc.Log.logLevel = Oidc.Log.INFO;
+
+        var userManager = new Oidc.UserManager({
+        	authority: "https://accounts.swiss-sdr.ch",
+        	client_id: "testclient",
+        	//redirect_uri: window.location.origin + "/popup.html",
+        	redirect_uri: window.location.origin + "/redirect.html",
+        	silent_redirect_uri: window.location.origin + "/renew.html",
+			post_logout_redirect_uri: window.location.origin + "/signout.html",
+        	automaticSilentRenew: true,
+        	response_type: "id_token token",
+        	scope: "openid profile swisssdr-api"
+        });
+
+        userManager.events.addUserSignedOut(function () {
+        	console.log("user signed out");
+        });
+
+        window.addEventListener("message", function (e) {
+        	if (e.data === "silentloginsuccess") {
+        		window.setTimeout(function () {
+        			userManager.signinSilent().then(function (user) {
+        				display(".js-id-token", user);
+        				document.querySelector("#silentloginhelper").remove();
+
+        			}, function (error) {
+        				console.log("error in silentlogin message handling", error);
+        			});
+        		}, 500);
+        	}
+        }, false);
+
+        userManager.getUser().then(function (user) {
+        	display(".js-id-token", user);
+
+        	// try to login using `acr_values` to preset the idp and bypass the identity server 
+        	// login screen. This allows a fully automatic login if there is an existing session 
+        	// with the external idp and establishes a session with idsrv
+        	if (user === null) {
+        		userManager.signinSilent().then(function (user) {
+        			display(".js-id-token", user);
+
+        		}, function (error) {
+        			//var iframe = document.createElement("iframe");
+        			//iframe.id = "silentloginhelper";
+        			//iframe.setAttribute("src", "silentlogin.html");
+        			//iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+        			//document.body.appendChild(iframe);
+        		});
+        	}
+
+        }, function (error) {
+        	console.log(error);
+        });
+
+        $(".js-login").click(function () {
+            userManager.signinRedirect()
+                .then(function (user) {
+                    display(".js-id-token", user);
+                }, function (error) {
+                    console.error(error);
+                });
+        });
+
+        $(".js-logout").click(function () {
+        	userManager.signoutRedirect();
+        });
+    </script>
+</body>
+</html>
