@@ -20,6 +20,8 @@ namespace SwissSdr.Identity.Configuration
 
 					AllowedCorsOrigins =
 					{
+						"https://swiss-sdr.ch",
+						"https://www.swiss-sdr.ch",
 						"https://app.swiss-sdr.ch",
 						"https://swisssdr-development.azurewebsites.net",
 						"https://swisssdr.novu.io:3000"
@@ -27,6 +29,12 @@ namespace SwissSdr.Identity.Configuration
 
 					RedirectUris =
 					{
+						"https://swiss-sdr.ch",
+						"https://swiss-sdr.ch/app/authRedirectUri.html",
+						"https://swiss-sdr.ch/app/authSilentRedirectUri.html",
+						"https://www.swiss-sdr.ch",
+						"https://www.swiss-sdr.ch/app/authRedirectUri.html",
+						"https://www.swiss-sdr.ch/app/authSilentRedirectUri.html",
 						"https://app.swiss-sdr.ch",
 						"https://app.swiss-sdr.ch/app/authRedirectUri.html",
 						"https://app.swiss-sdr.ch/app/authSilentRedirectUri.html",
@@ -40,6 +48,8 @@ namespace SwissSdr.Identity.Configuration
 
 					PostLogoutRedirectUris =
 					{
+						"https://swiss-sdr.ch/app/authPostLogoutRedirectUri.html",
+						"https://www.swiss-sdr.ch/app/authPostLogoutRedirectUri.html",
 						"https://app.swiss-sdr.ch/app/authPostLogoutRedirectUri.html",
 						"https://swisssdr-development.azurewebsites.net/app/authPostLogoutRedirectUri.html",
 						"https://swisssdr.novu.io:3000/app/authPostLogoutRedirectUri.html"
@@ -65,6 +75,7 @@ namespace SwissSdr.Identity.Configuration
 					{
 						"http://localhost:5000/swagger/o2c.html",
 						"https://localhost:44356/swagger/o2c.html",
+						"https://api.swiss-sdr.ch/swagger/o2c.html",
 						"https://swisssdr-api.azurewebsites.net/swagger/o2c.html",
 						"https://swisssdr-api-development.azurewebsites.net/swagger/o2c.html"
 					},
