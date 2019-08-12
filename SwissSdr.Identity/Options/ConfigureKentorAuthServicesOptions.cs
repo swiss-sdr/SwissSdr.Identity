@@ -19,7 +19,8 @@ namespace SwissSdr.Identity.Options
 		{
 			var spOptions = new SPOptions();
 			spOptions.EntityId = new EntityId("https://accounts.swiss-sdr.ch/shibboleth");
-			spOptions.ServiceCertificates.Add(GetCertificate());
+			spOptions.ServiceCertificates.Add(GetCertificate("A864EB32718B6A100325ACDC1196D10F187AB3DB"));
+			spOptions.ServiceCertificates.Add(GetCertificate("87291795F51C054F0A5203CC0A816A21B6253310"));
 			spOptions.NameIdPolicy = new Saml2NameIdPolicy(true, NameIdFormat.Persistent);
 			spOptions.SystemIdentityModelIdentityConfiguration.ClaimsAuthenticationManager = new SwitchAaiClaimsAuthenticationManager();
 
@@ -37,12 +38,12 @@ namespace SwissSdr.Identity.Options
 			var switchAaiFederation = new Federation("http://metadata.aai.switch.ch/metadata.switchaai.xml", false, options);
 		}
 
-		private X509Certificate2 GetCertificate()
+		private X509Certificate2 GetCertificate(string thumbprint)
 		{
 			var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
 			store.Open(OpenFlags.ReadOnly);
 
-			var certs = store.Certificates.Find(X509FindType.FindByThumbprint, "A864EB32718B6A100325ACDC1196D10F187AB3DB", false);
+			var certs = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
 			return certs[0];
 		}
 	}
