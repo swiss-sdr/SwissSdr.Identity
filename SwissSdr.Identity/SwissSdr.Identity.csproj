@@ -55,9 +55,9 @@
 	  <WCFMetadata Include="Connected Services" />
 	</ItemGroup>
 
-	<Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+	<!--<Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
 		<Exec Command="npm install" />
 		<Exec Command="gulp prod" />
-	</Target>
+	</Target>-->
 
 </Project>
