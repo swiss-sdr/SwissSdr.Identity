@@ -1,2 +1,2 @@
 [config]
-project = SwissSdr.Identity
+project = SwissSdr.Identity/SwissSdr.Identity.csproj
